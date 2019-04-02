@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
 *** Laboratório de Programação 2 - Lab 1
 *** 
