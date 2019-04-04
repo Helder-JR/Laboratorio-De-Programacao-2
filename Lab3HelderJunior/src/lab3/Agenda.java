@@ -1,109 +1,83 @@
 package lab3;
 
-import java.util.Scanner;
-
 /**
- * Laboratório de Programação 2 - Lab. 3
+ * Representação de uma agenda de contatos. A agenda é <b>composta</b> de
+ * elementos do tipo Contato, sendo responsável por criá-los e manipulá-los
+ * (cadastrar, listar e exibir).
  * 
- * @author Helder Chaves Leite Junior - 118210158
+ * @author Helder Junior
+ * @version 1.0
  */
 public class Agenda
-{	
-	public static void main(String[] args)
+{
+	/**
+	 * Array de contatos.
+	 */
+	private Contato[] contato;
+	
+	/**
+	 * Índice referente ao último contato cadastrado. É importante na hora de
+	 * listar todos os contatos.
+	 */
+	private int ultimoCadastro;
+	
+	/**
+	 * Constrói uma agenda com 100 contatos (possui tamanho 101 para facilitar
+	 * a indexação).
+	 */
+	public Agenda()
 	{
-		Scanner entrada = new Scanner(System.in);
-		Contato agenda[] = new Contato[101];		
+		contato = new Contato[101];
+	}
+	
+	/**
+	 * Cadastra um contato a partir do seu nome, sobrenome, telefone e posição
+	 * a ser definida na agenda.
+	 * 
+	 * @param nome o nome do contato.
+	 * @param sobrenome o sobrenome do contato.
+	 * @param telefone o telefone do contato.
+	 * @param posicao a posição na agenda em que o contato deve ser inserido.
+	 * @return um booleano <b>true</b> caso o contato seja cadastrado com
+	 * sucesso, e <b>false</b> caso contrário.
+	 */
+	public boolean cadastraContato(String nome, String sobrenome, String telefone, int posicao)
+	{
+		this.contato[posicao] = new Contato(nome, sobrenome, telefone);
 		
-		char opcao;
-		int ultimoCadastro = 0;
-		
-		do
+		if (this.contato[posicao] != null)
 		{
-			System.out.println("(C)adastrar Contato");
-			System.out.println("(L)istar Contatos");
-			System.out.println("(E)xibir Contato");
-			System.out.println("(S)air");
-			System.out.println();
-			System.out.print("Opção> ");
+			if (posicao > ultimoCadastro)
+				ultimoCadastro = posicao;
 			
-			opcao = entrada.nextLine().toUpperCase().charAt(0);
-			
-			switch (opcao)
-			{
-				case 'C':
-				{
-					System.out.print("Posição: ");
-					int posicao = entrada.nextInt();
-					entrada.nextLine();
-					
-					if (posicao < 1 || posicao > 100)
-						break;
-					else
-					{
-						System.out.print("Nome: ");
-						String nome = entrada.nextLine();
-						
-						System.out.print("Sobrenome: ");
-						String sobrenome = entrada.nextLine();
-						
-						System.out.print("Telefone: ");
-						String telefone = entrada.nextLine();
-						
-						agenda[posicao] = new Contato(nome, sobrenome, telefone);
-						
-						System.out.println("CADASTRO REALIZADO!");
-						System.out.println();
-						
-						if (posicao > ultimoCadastro)
-							ultimoCadastro = posicao;
-						
-						break;
-					}
-				}
-					
-				case 'L':
-				{
-					for (int pos = 1; pos <= ultimoCadastro; pos++)
-						if (agenda[pos] != null)
-							System.out.println(pos + " - " + agenda[pos].getNomeSobrenome());
-					
-					System.out.println();
-					
-					break;
-				}
-				
-				case 'E':
-				{
-					System.out.print("Contato> ");
-					int posicao = entrada.nextInt();
-					entrada.nextLine();
-					System.out.println();
-					
-					if (posicao >= 1 && posicao <= 100 && agenda[posicao] != null)
-						System.out.println(agenda[posicao]);
-						
-					else
-						System.out.println("POSIÇÃO INVÁLIDA!");
-					
-					System.out.println();
-					
-					break;
-				}
-				
-				case 'S':
-				{
-					break;
-				}
-				
-				default:
-				{
-					System.out.println("OPÇÃO INVÁLIDA!");
-					System.out.println();
-				}
-			}
+			return true;
 		}
-		while (opcao != 'S');
+		else
+			return false;
+	}
+	
+	/**
+	 * Lista todos os contatos que estão armazenados na agenda, um em cada
+	 * linha, na forma "POSIÇÃO - NOME SOBRENOME".
+	 */
+	public void listaContatos()
+	{
+		System.out.println();
 		
-		entrada.close();
+		for (int pos = 1; pos <= this.ultimoCadastro; pos++)
+			if (contato[pos] != null)
+				System.out.println(pos + " - " + this.contato[pos].getNomeSobrenome());
+		
+		System.out.println();
+	}
+	
+	public Contato exibeContato(int posicao)
+	{
+		return this.contato[posicao];
+	}
+	
+	public boolean possuiContato(int posicao)
+	{
+		return this.contato[posicao] != null;
 	}
 }

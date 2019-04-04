@@ -6,6 +6,7 @@ package lab3;
  * imprimir uma representação também com o telefone.
  * 
  * @author Helder Chaves Leite Junior
+ * @version 1.0
  */
 public class Contato
 {
