@@ -65,7 +65,7 @@ public class Agenda
 				{
 					for (int pos = 1; pos <= ultimoCadastro; pos++)
 						if (agenda[pos] != null)
-							System.out.println(pos + " - " + agenda[pos].getNomeCompleto());
+							System.out.println(pos + " - " + agenda[pos].getNomeSobrenome());
 					
 					System.out.println();
 					
