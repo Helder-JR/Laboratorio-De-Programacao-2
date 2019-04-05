@@ -12,6 +12,7 @@ public class Principal
 	public static void main(String[] args)
 	{
 		Scanner entrada = new Scanner(System.in);
+		
 		Agenda agenda = new Agenda();
 		
 		char opcao;
@@ -36,7 +37,10 @@ public class Principal
 					entrada.nextLine();
 					
 					if (posicao < 1 || posicao > 100)
+					{
+						System.out.println();
 						break;
+					}
 					else
 					{
 						System.out.print("Nome: ");

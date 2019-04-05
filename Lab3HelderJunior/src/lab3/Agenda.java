@@ -1,12 +1,14 @@
 package lab3;
 
+import java.util.Arrays;
+
 /**
  * Representação de uma agenda de contatos. A agenda é <b>composta</b> de
  * elementos do tipo Contato, sendo responsável por criá-los e manipulá-los
  * (cadastrar, listar e exibir).
  * 
  * @author Helder Junior
- * @version 1.0
+ * @version 1.1
  */
 public class Agenda
 {
@@ -38,8 +40,8 @@ public class Agenda
 	 * @param sobrenome o sobrenome do contato.
 	 * @param telefone o telefone do contato.
 	 * @param posicao a posição na agenda em que o contato deve ser inserido.
-	 * @return um booleano <b>true</b> caso o contato seja cadastrado com
-	 * sucesso, e <b>false</b> caso contrário.
+	 * @return um booleano {@code true} caso o contato seja cadastrado com
+	 * sucesso, e {@code false} caso contrário.
 	 */
 	public boolean cadastraContato(String nome, String sobrenome, String telefone, int posicao)
 	{
@@ -71,13 +73,49 @@ public class Agenda
 		System.out.println();
 	}
 	
+	/**
+	 * Exibe um contato em uma posição especificada, no formato
+	 * "NOME SOBRENOME - TELEFONE".
+	 * 
+	 * @param posicao a posição do contato a ser exibido.
+	 * @return uma representação do contato.
+	 */
 	public Contato exibeContato(int posicao)
 	{
 		return this.contato[posicao];
 	}
 	
+	/**
+	 * Verifica se uma determinada posição da agenda possui um contato
+	 * cadastrado.
+	 * 
+	 * @param posicao a posição do contato a ser verificada.
+	 * @return um booleano {@code true} caso exista um contato na posição
+	 * especificada e {@code false} caso contrário.
+	 */
 	public boolean possuiContato(int posicao)
 	{
 		return this.contato[posicao] != null;
 	}
+	
+	/**
+	 * Verifica se duas agendas são iguais através dos contatos que possuem em
+	 * posições idênticas.
+	 */
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Agenda other = (Agenda) obj;
+		if (!Arrays.equals(contato, other.contato))
+			return false;
+		return true;
+	}
+	
+	
 }

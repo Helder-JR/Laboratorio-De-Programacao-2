@@ -10,8 +10,19 @@ package lab3;
  */
 public class Contato
 {
+	/**
+	 * O nome do contato.
+	 */
 	private String nome;
+	
+	/**
+	 * O sobrenome do contato.
+	 */
 	private String sobrenome;
+	
+	/**
+	 * O telefone do contato, no formato {@code String}.
+	 */
 	private String telefone;
 	
 	/**
@@ -39,10 +50,11 @@ public class Contato
 	}
 	
 	/**
-	 * Representação do contato.
+	 * Representação do contato, no formato "NOME SOBRENOME - TELEFONE".
 	 * 
-	 * @return o nome e sobrenome do contato.
+	 * @return o nome, sobrenome e telefone do contato.
 	 */
+	@Override
 	public String toString()
 	{
 		return String.format("%s %s - %s", this.nome, this.sobrenome, this.telefone);
