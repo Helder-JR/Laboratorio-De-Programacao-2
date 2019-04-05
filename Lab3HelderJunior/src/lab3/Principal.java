@@ -28,6 +28,9 @@ public class Principal
 			
 			opcao = entrada.nextLine().toUpperCase().charAt(0);
 			
+			if (opcao == 'S')
+				break;
+			
 			switch (opcao)
 			{
 				case 'C':
@@ -81,11 +84,6 @@ public class Principal
 					
 					System.out.println();
 					
-					break;
-				}
-				
-				case 'S':
-				{
 					break;
 				}
 				

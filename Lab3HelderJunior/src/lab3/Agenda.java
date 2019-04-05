@@ -99,12 +99,28 @@ public class Agenda
 	}
 	
 	/**
-	 * Verifica se duas agendas são iguais através dos contatos que possuem em
-	 * posições idênticas.
+	 * Método hashCode da agenda, baseado nos hashCodes dos seus contatos.
+	 * 
+	 * @return o hashCode da agenda.
 	 */
 	@Override
-	public boolean equals(Object obj)
-	{
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(contato);
+		return result;
+	}
+	
+	/**
+	 * Verifica se duas agendas são iguais, com base em seus contatos em
+	 * posições idênticas.
+	 * 
+	 * @param obj a outra agenda que será comparada.
+	 * @return um booleano {@code true} caso as agendas sejam iguais, e
+	 * {@code false} caso contrário.
+	 */
+	@Override
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -116,6 +132,5 @@ public class Agenda
 			return false;
 		return true;
 	}
-	
 	
 }
