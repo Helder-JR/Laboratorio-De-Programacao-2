@@ -40,6 +40,72 @@ public class Contato
 	}
 	
 	/**
+	 * Getter que retorna o nome do contato, importante para os testes de
+	 * unidade.
+	 * 
+	 * @return o nome do contato.
+	 */
+	public String getNome()
+	{
+		return this.nome;
+	}
+	
+	/**
+	 * Setter que define o nome do contato, importante para os testes de
+	 * unidade.
+	 * 
+	 * @param nome o nome do contato a ser definido.
+	 */
+	public void setNome(String nome)
+	{
+		this.nome = nome;
+	}
+	
+	/**
+	 * Getter que retorna o sobrenome do contato, importante para os testes
+	 * de unidade.
+	 * 
+	 * @return o sobrenome do contato.
+	 */
+	public String getSobrenome()
+	{
+		return this.sobrenome;
+	}
+	
+	/**
+	 * Setter que define o sobrenome do contato, importante para os testes
+	 * de unidade.
+	 * 
+	 * @param sobrenome o sobrenome do contato a ser definido.
+	 */
+	public void setSobrenome(String sobrenome)
+	{
+		this.sobrenome = sobrenome;
+	}
+	
+	/**
+	 * Getter que retorna o telefone do contato, importante para os testes
+	 * de unidade.
+	 * 
+	 * @return o telefone do contato.
+	 */
+	public String getTelefone()
+	{
+		return this.telefone;
+	}
+	
+	/**
+	 * Setter que definie o telefone do contato, importante para os testes
+	 * de unidade.
+	 * 
+	 * @param telefone o telefone a ser definido.
+	 */
+	public void setTelefone(String telefone)
+	{
+		this.telefone = telefone;
+	}
+	
+	/**
 	 * Retorna o nome e sobrenome do contato.
 	 * 
 	 * @return o nome e sobrenome do contato.
@@ -103,11 +169,7 @@ public class Contato
 				return false;
 		} else if (!sobrenome.equals(other.sobrenome))
 			return false;
-		if (telefone == null) {
-			if (other.telefone != null)
-				return false;
-		} else if (!telefone.equals(other.telefone))
-			return false;
+		
 		return true;
 	}
 }
