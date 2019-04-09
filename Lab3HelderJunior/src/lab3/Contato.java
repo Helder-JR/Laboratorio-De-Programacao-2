@@ -5,8 +5,8 @@ package lab3;
  * telefone. Há a possibilidade de saber o nome e sobrenome do contato e
  * imprimir uma representação também com o telefone.
  * 
- * @author Helder Chaves Leite Junior
- * @version 1.0
+ * @author Helder Chaves Leite Junior - 118210158
+ * @version 1.1
  */
 public class Contato
 {
@@ -26,99 +26,54 @@ public class Contato
 	private String telefone;
 	
 	/**
-	 * Constrói um contato a partir de seu nome, sobrenome e telefone.
+	 * Constrói um contato a partir de seu nome, sobrenome e telefone. Caso
+	 * algum dos argumentos seja nulo ou inválido serão lançadas exceções.
 	 * 
 	 * @param nome o nome do contato.
 	 * @param sobrenome o sobrenome do contato.
 	 * @param telefone o telefone do contato.
+	 * @since 1.0
 	 */
 	public Contato(String nome, String sobrenome, String telefone)
 	{
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.telefone = telefone;
+		if (nome == null)
+			throw new NullPointerException("NOME NULO!");
+		else if (nome == "" || nome.trim().isEmpty())
+			throw new IllegalArgumentException("NOME INVÁLIDO!");
+		else
+			this.nome = nome;
+		
+		if (sobrenome == null)
+			throw new NullPointerException("SOBRENOME NULO!");
+		else if (sobrenome == "" || sobrenome.trim().isEmpty())
+			throw new IllegalArgumentException("SOBRENOME INVÁLIDO");
+		else
+			this.sobrenome = sobrenome;
+		
+		if (telefone == null)
+			throw new NullPointerException("TELEFONE NULO!");
+		else if (telefone == "" || telefone.trim().isEmpty())
+			throw new IllegalArgumentException("TELEFONE INVÁLIDO!");
+		else
+			this.telefone = telefone;
 	}
 	
 	/**
-	 * Getter que retorna o nome do contato, importante para os testes de
-	 * unidade.
-	 * 
-	 * @return o nome do contato.
-	 */
-	public String getNome()
-	{
-		return this.nome;
-	}
-	
-	/**
-	 * Setter que define o nome do contato, importante para os testes de
-	 * unidade.
-	 * 
-	 * @param nome o nome do contato a ser definido.
-	 */
-	public void setNome(String nome)
-	{
-		this.nome = nome;
-	}
-	
-	/**
-	 * Getter que retorna o sobrenome do contato, importante para os testes
-	 * de unidade.
-	 * 
-	 * @return o sobrenome do contato.
-	 */
-	public String getSobrenome()
-	{
-		return this.sobrenome;
-	}
-	
-	/**
-	 * Setter que define o sobrenome do contato, importante para os testes
-	 * de unidade.
-	 * 
-	 * @param sobrenome o sobrenome do contato a ser definido.
-	 */
-	public void setSobrenome(String sobrenome)
-	{
-		this.sobrenome = sobrenome;
-	}
-	
-	/**
-	 * Getter que retorna o telefone do contato, importante para os testes
-	 * de unidade.
-	 * 
-	 * @return o telefone do contato.
-	 */
-	public String getTelefone()
-	{
-		return this.telefone;
-	}
-	
-	/**
-	 * Setter que definie o telefone do contato, importante para os testes
-	 * de unidade.
-	 * 
-	 * @param telefone o telefone a ser definido.
-	 */
-	public void setTelefone(String telefone)
-	{
-		this.telefone = telefone;
-	}
-	
-	/**
-	 * Retorna o nome e sobrenome do contato.
+	 * Retorna o nome e sobrenome do contato, no formato "Nome Sobrenome".
 	 * 
 	 * @return o nome e sobrenome do contato.
+	 * @since 1.0
 	 */
 	public String getNomeSobrenome()
 	{
-		return this.nome + " " + this.sobrenome;
+		return String.format("%s %s", this.nome, this.sobrenome);
 	}
 	
 	/**
-	 * Representação do contato, no formato "NOME SOBRENOME - TELEFONE".
+	 * Representação do contato, no formato "Nome Sobrenome - Telefone".
 	 * 
 	 * @return o nome, sobrenome e telefone do contato.
+	 * @since 1.0
 	 */
 	@Override
 	public String toString()
@@ -131,6 +86,7 @@ public class Contato
 	 * do contato.
 	 * 
 	 * @return o hashCode do objeto.
+	 * @since 1.1
 	 */
 	@Override
 	public int hashCode() {
@@ -149,6 +105,8 @@ public class Contato
 	 * @param obj o outro contato que será comparado.
 	 * @return um booleano {@code true} caso os contatos sejam iguais, e
 	 * {@code false} caso contrário.
+	 * 
+	 * @since 1.1
 	 */
 	@Override
 	public boolean equals(Object obj) {

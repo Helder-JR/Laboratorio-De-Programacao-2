@@ -7,8 +7,8 @@ import java.util.Arrays;
  * elementos do tipo Contato, sendo responsável por criá-los e manipulá-los
  * (cadastrar, listar e exibir).
  * 
- * @author Helder Junior
- * @version 1.1
+ * @author Helder Chaves Leite Junior - 118210158
+ * @version 1.2
  */
 public class Agenda
 {
@@ -24,12 +24,11 @@ public class Agenda
 	private int ultimoCadastro;
 	
 	/**
-	 * Constrói uma agenda com 100 contatos (possui tamanho 101 para facilitar
-	 * a indexação).
+	 * Constrói uma agenda com 100 contatos.
 	 */
 	public Agenda()
 	{
-		contato = new Contato[101];
+		contato = new Contato[100];
 	}
 	
 	/**
@@ -42,47 +41,61 @@ public class Agenda
 	 * @param posicao a posição na agenda em que o contato deve ser inserido.
 	 * @return um booleano {@code true} caso o contato seja cadastrado com
 	 * sucesso, e {@code false} caso contrário.
+	 * @since 1.0
 	 */
-	public boolean cadastraContato(String nome, String sobrenome, String telefone, int posicao)
+	public boolean cadastraContato(String nome, String sobrenome, String telefone, int pos)
 	{
-		this.contato[posicao] = new Contato(nome, sobrenome, telefone);
-		
-		if (this.contato[posicao] != null)
+		if (pos > 0 && pos < 101)
 		{
-			if (posicao > ultimoCadastro)
-				ultimoCadastro = posicao;
+			int posicao = pos - 1;
 			
-			return true;
+			this.contato[posicao] = new Contato(nome, sobrenome, telefone);
+			
+			if (this.contato[posicao] != null)
+			{
+				if (posicao > ultimoCadastro)
+					ultimoCadastro = posicao;
+				
+				return true;
+			}
+			else
+				return false;
 		}
 		else
+		{
 			return false;
+		}
 	}
 	
 	/**
 	 * Lista todos os contatos que estão armazenados na agenda, um em cada
-	 * linha, na forma "POSIÇÃO - NOME SOBRENOME".
+	 * linha, na forma "Posição - Nome Sobrenome".
+	 * 
+	 * @since 1.0
 	 */
 	public void listaContatos()
 	{
 		System.out.println();
 		
-		for (int pos = 1; pos <= this.ultimoCadastro; pos++)
+		for (int pos = 0; pos <= this.ultimoCadastro; pos++)
 			if (contato[pos] != null)
-				System.out.println(pos + " - " + this.contato[pos].getNomeSobrenome());
+				System.out.println((pos + 1) + " - " + this.contato[pos].getNomeSobrenome());
 		
 		System.out.println();
 	}
 	
 	/**
 	 * Exibe um contato em uma posição especificada, no formato
-	 * "NOME SOBRENOME - TELEFONE".
+	 * "Nome Sobrenome - Telefone".
 	 * 
 	 * @param posicao a posição do contato a ser exibido.
 	 * @return uma representação do contato.
+	 * 
+	 * @since 1.0
 	 */
-	public Contato exibeContato(int posicao)
+	public String exibeContato(int posicao)
 	{
-		return this.contato[posicao];
+		return this.contato[posicao - 1].toString();
 	}
 	
 	/**
@@ -92,16 +105,20 @@ public class Agenda
 	 * @param posicao a posição do contato a ser verificada.
 	 * @return um booleano {@code true} caso exista um contato na posição
 	 * especificada e {@code false} caso contrário.
+	 * 
+	 * @since 1.0
 	 */
 	public boolean possuiContato(int posicao)
 	{
-		return this.contato[posicao] != null;
+		return this.contato[posicao - 1] != null;
 	}
 	
 	/**
 	 * Método hashCode da agenda, baseado nos hashCodes dos seus contatos.
 	 * 
 	 * @return o hashCode da agenda.
+	 * 
+	 * @since 1.1
 	 */
 	@Override
 	public int hashCode() {
@@ -118,6 +135,8 @@ public class Agenda
 	 * @param obj a outra agenda que será comparada.
 	 * @return um booleano {@code true} caso as agendas sejam iguais, e
 	 * {@code false} caso contrário.
+	 * 
+	 * @since 1.1
 	 */
 	@Override
 	public boolean equals(Object obj) {
