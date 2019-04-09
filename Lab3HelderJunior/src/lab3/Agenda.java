@@ -43,15 +43,13 @@ public class Agenda
 	 * sucesso, e {@code false} caso contrário.
 	 * @since 1.0
 	 */
-	public boolean cadastraContato(String nome, String sobrenome, String telefone, int pos)
+	public boolean cadastraContato(String nome, String sobrenome, String telefone, int posicao)
 	{
-		if (pos > 0 && pos < 101)
+		if (posicao >= 1 && posicao <= 100)
 		{
-			int posicao = pos - 1;
+			this.contato[posicao - 1] = new Contato(nome, sobrenome, telefone);
 			
-			this.contato[posicao] = new Contato(nome, sobrenome, telefone);
-			
-			if (possuiContato(pos))
+			if (possuiContato(posicao))
 			{
 				if (posicao > ultimoCadastro)
 					ultimoCadastro = posicao;

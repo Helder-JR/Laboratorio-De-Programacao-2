@@ -79,12 +79,7 @@ public class Principal
 		int posicao = entrada.nextInt();
 		entrada.nextLine();
 		
-		if (posicao < 1 || posicao > 100)
-		{
-			System.out.println("POSIÇÃO INVÁLIDA!");
-			System.out.println();
-		}
-		else
+		if (posicao >= 1 && posicao <= 100)
 		{
 			System.out.print("Nome: ");
 			String nome = entrada.nextLine();
@@ -100,6 +95,11 @@ public class Principal
 				System.out.println("CADASTRO REALIZADO!");
 				System.out.println();
 			}
+		}
+		else
+		{
+			System.out.println("POSIÇÃO INVÁLIDA!");
+			System.out.println();
 		}
 	}
 	
@@ -127,7 +127,7 @@ public class Principal
 		int posicao = entrada.nextInt();
 		entrada.nextLine();
 		
-		if (posicao > 0 && posicao < 101 && agenda.possuiContato(posicao))
+		if (posicao >= 1 && posicao <= 100 && agenda.possuiContato(posicao))
 		{
 			System.out.println();
 			System.out.println(agenda.exibeContato(posicao));
