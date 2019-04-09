@@ -39,7 +39,7 @@ public class Principal
 				
 				case 'L':
 				{
-					agenda.listaContatos();
+					menuListar(entrada, agenda);;
 					break;
 				}
 				
@@ -101,6 +101,17 @@ public class Principal
 				System.out.println();
 			}
 		}
+	}
+	
+	public static void menuListar(Scanner entrada, Agenda agenda)
+	{
+		System.out.println();
+		
+		for (int pos = 1; pos <= agenda.getUltimoCadastro(); pos++)
+			if (agenda.possuiContato(pos))
+				System.out.println(agenda.listaContato(pos));
+		
+		System.out.println();
 	}
 	
 	/**

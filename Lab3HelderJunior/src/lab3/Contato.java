@@ -32,6 +32,10 @@ public class Contato
 	 * @param nome o nome do contato.
 	 * @param sobrenome o sobrenome do contato.
 	 * @param telefone o telefone do contato.
+	 * @throws NullPointerException quando o nome, sobrenome ou telefone são
+	 * nulos.
+	 * @throws IllegalArgumentException quando o nome, sobrenome ou telefone
+	 * são inválidos.
 	 * @since 1.0
 	 */
 	public Contato(String nome, String sobrenome, String telefone)
@@ -89,12 +93,12 @@ public class Contato
 	 * @since 1.1
 	 */
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((sobrenome == null) ? 0 : sobrenome.hashCode());
-		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
 	}
 	
@@ -109,7 +113,8 @@ public class Contato
 	 * @since 1.1
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -117,15 +122,15 @@ public class Contato
 		if (getClass() != obj.getClass())
 			return false;
 		Contato other = (Contato) obj;
-		if (nome == null) {
+		if (nome == null)
 			if (other.nome != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		else if (!nome.equals(other.nome))
 			return false;
-		if (sobrenome == null) {
+		if (sobrenome == null)
 			if (other.sobrenome != null)
 				return false;
-		} else if (!sobrenome.equals(other.sobrenome))
+		else if (!sobrenome.equals(other.sobrenome))
 			return false;
 		
 		return true;

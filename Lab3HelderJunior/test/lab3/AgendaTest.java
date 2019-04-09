@@ -67,6 +67,7 @@ class AgendaTest
 	@Test
 	void testEqualsObject()
 	{
-		fail("Not yet implemented");
+		Agenda outraAgenda = new Agenda();
+		
 	}
 }

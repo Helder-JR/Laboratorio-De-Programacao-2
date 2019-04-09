@@ -51,7 +51,7 @@ public class Agenda
 			
 			this.contato[posicao] = new Contato(nome, sobrenome, telefone);
 			
-			if (this.contato[posicao] != null)
+			if (possuiContato(pos))
 			{
 				if (posicao > ultimoCadastro)
 					ultimoCadastro = posicao;
@@ -62,26 +62,31 @@ public class Agenda
 				return false;
 		}
 		else
-		{
 			return false;
-		}
 	}
 	
 	/**
-	 * Lista todos os contatos que estão armazenados na agenda, um em cada
-	 * linha, na forma "Posição - Nome Sobrenome".
+	 * Retorna a posição do último contato cadastrado.
 	 * 
-	 * @since 1.0
+	 * @return o último contato cadastrado.
+	 * @since 1.2
 	 */
-	public void listaContatos()
+	public int getUltimoCadastro()
 	{
-		System.out.println();
-		
-		for (int pos = 0; pos <= this.ultimoCadastro; pos++)
-			if (contato[pos] != null)
-				System.out.println((pos + 1) + " - " + this.contato[pos].getNomeSobrenome());
-		
-		System.out.println();
+		return this.ultimoCadastro;
+	}
+	
+	/**
+	 * Retorna um contato na posição especificada, sob o formato
+	 * "Posição - Nome Sobrenome".
+	 * 
+	 * @param posicao a posição do contato a ser retornada.
+	 * @return o contato especificado.
+	 * @since 1.2
+	 */
+	public String listaContato(int posicao)
+	{
+		return String.format("%d - %s", posicao, this.contato[posicao - 1].getNomeSobrenome());
 	}
 	
 	/**
