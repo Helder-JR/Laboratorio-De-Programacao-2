@@ -15,7 +15,7 @@ class ContatoTest
 	Contato contato;
 	
 	@Test
-	void testContato()
+	public void testContato()
 	{
 		assertNull(this.contato);
 		contato = new Contato("Helder", "Junior", "83991700979");
@@ -23,7 +23,7 @@ class ContatoTest
 	}
 	
 	@Test
-	void testContatoSobreposicao()
+	public void testContatoSobreposicao()
 	{
 		contato = new Contato("Helder", "Junior", "83991700979");
 		contato = new Contato("Tayná", "Tavares", "83993469402");
@@ -31,7 +31,7 @@ class ContatoTest
 	}
 	
 	@Test
-	void testContatoNomeNulo()
+	public void testContatoNomeNulo()
 	{
 		try
 		{
@@ -42,7 +42,7 @@ class ContatoTest
 	}
 	
 	@Test
-	void testContatoNomeInvalido()
+	public void testContatoNomeInvalido()
 	{
 		try
 		{
@@ -53,7 +53,7 @@ class ContatoTest
 	}
 	
 	@Test
-	void testContatoSobrenomeNulo()
+	public void testContatoSobrenomeNulo()
 	{
 		try
 		{
@@ -64,7 +64,7 @@ class ContatoTest
 	}
 	
 	@Test
-	void testContatoSobrenomeInvalido()
+	public void testContatoSobrenomeInvalido()
 	{
 		try
 		{
@@ -75,7 +75,7 @@ class ContatoTest
 	}
 	
 	@Test
-	void testContatoTelefoneNulo()
+	public void testContatoTelefoneNulo()
 	{
 		try
 		{
@@ -86,7 +86,7 @@ class ContatoTest
 	}
 	
 	@Test
-	void testContatoTelefoneInvalido()
+	public void testContatoTelefoneInvalido()
 	{
 		try
 		{
@@ -97,21 +97,21 @@ class ContatoTest
 	}
 	
 	@Test
-	void testGetNomeSobrenome()
+	public void testGetNomeSobrenome()
 	{
 		this.contato = new Contato("Helder", "Junior", "83987654321");
 		assertEquals("Helder Junior", contato.getNomeSobrenome());
 	}
 
 	@Test
-	void testToString()
+	public void testToString()
 	{
 		this.contato = new Contato("Augusto", "Lima", "83999794424");
 		assertEquals("Augusto Lima - 83999794424", contato.toString());
 	}
 	
 	@Test
-	void testHashCodeContato()
+	public void testHashCodeContato()
 	{
 		Contato c1 = new Contato("Carlos", "Magno", "321");
 		Contato c2 = new Contato("Carlos", "Magno", "123");
@@ -119,7 +119,7 @@ class ContatoTest
 	}
 	
 	@Test
-	void testEqualsObject()
+	public void testEqualsObject()
 	{
 		Contato c1 = new Contato("Carlos", "Magno", "321");
 		Contato c2 = new Contato("Carlos", "Magno", "123");
