@@ -42,21 +42,21 @@ public class Contato
 	{
 		if (nome == null)
 			throw new NullPointerException("NOME NULO!");
-		else if (nome == "" || nome.trim().isEmpty())
+		else if (nome.equals("") || nome.trim().isEmpty())
 			throw new IllegalArgumentException("NOME INVÁLIDO!");
 		else
 			this.nome = nome;
 		
 		if (sobrenome == null)
 			throw new NullPointerException("SOBRENOME NULO!");
-		else if (sobrenome == "" || sobrenome.trim().isEmpty())
+		else if (sobrenome.equals("") || sobrenome.trim().isEmpty())
 			throw new IllegalArgumentException("SOBRENOME INVÁLIDO");
 		else
 			this.sobrenome = sobrenome;
 		
 		if (telefone == null)
 			throw new NullPointerException("TELEFONE NULO!");
-		else if (telefone == "" || telefone.trim().isEmpty())
+		else if (telefone.equals("") || telefone.trim().isEmpty())
 			throw new IllegalArgumentException("TELEFONE INVÁLIDO!");
 		else
 			this.telefone = telefone;

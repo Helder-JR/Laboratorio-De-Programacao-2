@@ -15,13 +15,13 @@ class AgendaTest
 	private Agenda agendaTest;
 	
 	@BeforeEach
-	void criaAgenda()
+	public void criaAgenda()
 	{
 		this.agendaTest = new Agenda();
 	}
 	
 	@Test
-	void testAgenda()
+	public void testAgenda()
 	{
 		Agenda agenda = null;
 		assertNull(agenda);
@@ -30,37 +30,37 @@ class AgendaTest
 	}
 	
 	@Test
-	void testCadastraContatoPosicaoZero()
+	public void testCadastraContatoPosicaoZero()
 	{
 		assertFalse(this.agendaTest.cadastraContato("Midoriya", "Izuku", "83991700979", 0));
 	}
 	
 	@Test
-	void testCadastraContatoPosicaoUm()
+	public void testCadastraContatoPosicaoUm()
 	{
 		assertTrue(this.agendaTest.cadastraContato("Katsu", "Bakugo", "83987654321", 1));
 	}
 	
 	@Test
-	void testCadastraContatoPosicaoCinquenta()
+	public void testCadastraContatoPosicaoCinquenta()
 	{
 		assertTrue(this.agendaTest.cadastraContato("Ochako", "Uraraka", "83900000000", 50));
 	}
 	
 	@Test
-	void testCadastraContatoPosicaoCem()
+	public void testCadastraContatoPosicaoCem()
 	{
 		assertTrue(this.agendaTest.cadastraContato("Tenya", "Iida", "83999999999", 100));
 	}
 	
 	@Test
-	void testCadastraContatoPosicaoCentoEum()
+	public void testCadastraContatoPosicaoCentoEum()
 	{
 		assertFalse(this.agendaTest.cadastraContato("Todoroki", "Shoto", "83911111111", 101));
 	}
 	
 	@Test
-	void testCadastraContatoNomeNulo()
+	public void testCadastraContatoNomeNulo()
 	{
 		try
 		{
@@ -71,7 +71,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testCadastraContatoNomeInvalido()
+	public void testCadastraContatoNomeInvalido()
 	{
 		try
 		{
@@ -82,7 +82,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testCadastraContatoSobrenomeNulo()
+	public void testCadastraContatoSobrenomeNulo()
 	{
 		try
 		{
@@ -93,7 +93,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testCadastraContatoSobrenomeInvalido()
+	public void testCadastraContatoSobrenomeInvalido()
 	{
 		try
 		{
@@ -104,7 +104,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testCadastraContatoTelefoneNulo()
+	public void testCadastraContatoTelefoneNulo()
 	{
 		try
 		{
@@ -115,7 +115,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testCadastraContatoTelefoneInvalido()
+	public void testCadastraContatoTelefoneInvalido()
 	{
 		try
 		{
@@ -126,7 +126,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testListaContatoPosicaoZero()
+	public void testListaContatoPosicaoZero()
 	{
 		try
 		{
@@ -136,28 +136,28 @@ class AgendaTest
 	}
 	
 	@Test
-	void testListaContatoPosicaoUm()
+	public void testListaContatoPosicaoUm()
 	{
 		this.agendaTest.cadastraContato("Katsu", "Bakugo", "83987654321", 1);
 		assertEquals("1 - Katsu Bakugo", this.agendaTest.listaContato(1));
 	}
 	
 	@Test
-	void testListaContatoPosicaoVinteEtres()
+	public void testListaContatoPosicaoVinteEtres()
 	{
 		this.agendaTest.cadastraContato("All", "Might", "83999999999", 23);
 		assertEquals("23 - All Might", this.agendaTest.listaContato(23));
 	}
 	
 	@Test
-	void testListaContatoPosicaoCem()
+	public void testListaContatoPosicaoCem()
 	{
 		this.agendaTest.cadastraContato("Tenya", "Iida", "83999999999", 100);
 		assertEquals("100 - Tenya Iida", this.agendaTest.listaContato(100));
 	}
 	
 	@Test
-	void testListaContatoPosicaoCentoEum()
+	public void testListaContatoPosicaoCentoEum()
 	{
 		try
 		{
@@ -167,7 +167,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testExibeContatoPosicaoZero()
+	public void testExibeContatoPosicaoZero()
 	{
 		try
 		{
@@ -177,28 +177,28 @@ class AgendaTest
 	}
 	
 	@Test
-	void testExibeContatoPosicaoUm()
+	public void testExibeContatoPosicaoUm()
 	{
 		this.agendaTest.cadastraContato("Katsu", "Bakugo", "83987654321", 1);
 		assertEquals("Katsu Bakugo - 83987654321", this.agendaTest.exibeContato(1));
 	}
 	
 	@Test
-	void testExibeContatoPosicaoCinquenta()
+	public void testExibeContatoPosicaoCinquenta()
 	{
 		this.agendaTest.cadastraContato("Ochako", "Uraraka", "83900000000", 50);
 		assertEquals("Ochako Uraraka - 83900000000", this.agendaTest.exibeContato(50));
 	}
 	
 	@Test
-	void testExibeContatoPosicaoCem()
+	public void testExibeContatoPosicaoCem()
 	{
 		this.agendaTest.cadastraContato("Tenya", "Iida", "83999999999", 100);
 		assertEquals("Tenya Iida - 83999999999", this.agendaTest.exibeContato(100));
 	}
 	
 	@Test
-	void testExibeContatoPosicaoCentoEum()
+	public void testExibeContatoPosicaoCentoEum()
 	{
 		try
 		{
@@ -208,7 +208,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testPossuiContatoPosicaoZero()
+	public void testPossuiContatoPosicaoZero()
 	{
 		try
 		{
@@ -218,28 +218,28 @@ class AgendaTest
 	}
 	
 	@Test
-	void testPossuiContatoPosicaoUm()
+	public void testPossuiContatoPosicaoUm()
 	{
 		this.agendaTest.cadastraContato("Katsu", "Bakugo", "83987654321", 1);
 		assertTrue(this.agendaTest.possuiContato(1));
 	}
 	
 	@Test
-	void testPossuiContatoPosicaoSetentaEsete()
+	public void testPossuiContatoPosicaoSetentaEsete()
 	{
 		this.agendaTest.cadastraContato("Mashirao", "Ojiro", "83789654231", 77);
 		assertTrue(this.agendaTest.possuiContato(77));
 	}
 	
 	@Test
-	void testPossuiContatoPosicaoCem()
+	public void testPossuiContatoPosicaoCem()
 	{
 		this.agendaTest.cadastraContato("Tenya", "Iida", "83999999999", 100);
 		assertTrue(this.agendaTest.possuiContato(100));
 	}
 	
 	@Test
-	void testPossuiContatoPosicaoCentoEum()
+	public void testPossuiContatoPosicaoCentoEum()
 	{
 		try
 		{
@@ -249,7 +249,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testHashCodeAgenda()
+	public void testHashCodeAgenda()
 	{
 		Agenda agenda1 = new Agenda();
 		agenda1.cadastraContato("Nome", "Sobrenome", "Telefone", 32);
@@ -263,7 +263,7 @@ class AgendaTest
 	}
 	
 	@Test
-	void testEqualsAgenda()
+	public void testEqualsAgenda()
 	{
 		Agenda agendaTest2 = new Agenda();
 		agendaTest2.cadastraContato("Katsu", "Bakugo", "83987564123", 1);
