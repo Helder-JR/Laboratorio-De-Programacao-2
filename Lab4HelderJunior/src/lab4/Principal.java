@@ -2,7 +2,7 @@ package lab4;
 
 import java.util.Scanner;
 
-public class ControleDeAlunos
+public class Principal
 {
 	public static void main(String[] args)
 	{
