@@ -51,11 +51,11 @@ public class Grupo
 	}
 	
 	/**
-	 * Exibe uma representação de uma lista que contém os alunos que participam  do grupo de estudo,
-	 * seguindo a representação:
-	 * 
-	 * "Alunos do grupo X"
-	 * "* Matrícula - Nome - Curso"
+	 * Retorna uma representação de uma lista que contém os alunos que participam  do grupo de estudo,
+	 * seguindo o modelo:
+	 * </br>
+	 * </br>"Alunos do grupo X"
+	 * </br>"* Matrícula - Nome - Curso"
 	 * 
 	 * @return a String que representa a lista de alunos no grupo de estudo.
 	 * @since 1.1

@@ -13,8 +13,15 @@ import java.util.HashMap;
  */
 public class ControleDeALunos
 {
+	/**
+	 * HashMap que irá armazenar os alunos, inserindo-os através da sua matrícula.
+	 */
 	private HashMap<String, Aluno> alunos;
-	private ArrayList<String> alunosQueResponderam;
+	
+	/**
+	 * ArrayList que irá armazenar os alunos que responderam questões.
+	 */
+	private ArrayList<Aluno> alunosQueResponderamQuestoes;
 	
 	/**
 	 * Cria um controle de alunos.
@@ -22,7 +29,7 @@ public class ControleDeALunos
 	public ControleDeALunos()
 	{
 		this.alunos = new HashMap<>();
-		this.alunosQueResponderam = new ArrayList<>();
+		this.alunosQueResponderamQuestoes = new ArrayList<>();
 	}
 	
 	/**
@@ -50,10 +57,61 @@ public class ControleDeALunos
 		}
 	}
 	
+	/**
+	 * Verifica no mapa de alunos a existência de um indivídio, e retorna uma referência para esse
+	 * aluno, caso esteja alocado, ou {@code null} caso contrário.
+	 * 
+	 * @param matricula a matrícula referente ao aluno que será consultado.
+	 * @return o aluno referente a matrícula passada como parâmetro.
+	 * @since 1.0
+	 */
 	public Aluno consultarAluno(String matricula)
 	{
 		Excecao.testarEntrada(matricula);
 		
 		return this.alunos.get(matricula);
+	}
+	
+	/**
+	 * Cadastra um aluno no arranjo de alunos que responderam questões no quadro (caso esse aluno
+	 * exista).
+	 * 
+	 * @param matricula a matrícula referente ao aluno a ser cadastrado.
+	 * @return um booleano {@code true} caso esse aluno seja adicionado ao arranjo e {@code false}
+	 * caso contrário.
+	 * @since 1.0
+	 */
+	public boolean cadastrarAlunosQueResponderam(String matricula)
+	{
+		Excecao.testarEntrada(matricula);
+		
+		if (this.alunos.containsKey(matricula))
+		{
+			this.alunosQueResponderamQuestoes.add(this.alunos.get(matricula));
+			return false;
+		}
+		else
+			return false;
+	}
+	
+	/**
+	 * Retorna uma representação de um arranjo de alunos que responderam questões no quadro, 
+	 * seguindo o modelo:
+	 * </br>
+	 * </br>"Alunos:"
+	 * </br>"1. Matrícula - Nome - Curso"
+	 * 
+	 * @return a String que representa o arranjo de alunos que responderam questões no quadro. 
+	 * @since 1.0
+	 */
+	public String imprimirAlunosQueResponderamQuestoes()
+	{
+		String lista = "";
+		
+		lista += "Alunos:" + System.lineSeparator();
+		for (int i = 0; i < this.alunosQueResponderamQuestoes.size(); i++)
+			lista += (i + 1) + this.alunosQueResponderamQuestoes.get(i).toString() + System.lineSeparator();
+		
+		return lista.trim();
 	}
 }
