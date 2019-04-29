@@ -15,7 +15,7 @@ public class Grupo
 	private HashSet<Aluno> alunos;
 	
 	/**
-	 * Cria um grupo de estudos a partir do seu tema.
+	 * Cria um grupo de estudos.
 	 * 
 	 * @param tema o tema do grupo de estudos.
 	 * @since 1.0
@@ -84,14 +84,14 @@ public class Grupo
 		final int prime = 31;
 		int result = 1;
 		
-		result = prime * result + ((tema == null) ? 0 : tema.hashCode());
+		result = prime * result + ((this.tema == null) ? 0 : tema.hashCode());
 		
 		return result;
 	}
 
 	/**
-	 * Compara a igualdade entre um grupo de estudos e outros objetos, usando o tema como fator
-	 * último de comparação.
+	 * Compara a igualdade entre um grupo de estudos e outro objeto, usando o tema como fator de
+	 * comparação.
 	 * 
 	 * @return um booleano {@code true} caso os objetos sejam iguais e {@code false} caso contrário.
 	 * @since 1.0
@@ -118,6 +118,4 @@ public class Grupo
 		
 		return true;
 	}
-	
-	
 }

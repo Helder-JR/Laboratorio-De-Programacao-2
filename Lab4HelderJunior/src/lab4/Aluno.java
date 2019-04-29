@@ -25,7 +25,7 @@ public class Aluno
 	String curso;
 	
 	/**
-	 * Cria um aluno a partir da matrícula, nome e curso.
+	 * Cria um aluno.
 	 * 
 	 * @param matricula a matrícula do aluno.
 	 * @param nome o nome do aluno.
@@ -35,6 +35,10 @@ public class Aluno
 	 */
 	public Aluno(String matricula, String nome, String curso)
 	{
+		Excecao.testarEntrada(matricula);
+		Excecao.testarEntrada(nome);
+		Excecao.testarEntrada(curso);
+		
 		this.matricula = matricula;
 		this.nome = nome;
 		this.curso = curso;
@@ -78,13 +82,14 @@ public class Aluno
 		final int prime = 31;
 		int result = 1;
 		
-		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
+		result = prime * result + ((this.matricula == null) ? 0 : matricula.hashCode());
 		
 		return result;
 	}
 
 	/**
-	 * Compara a igualdade entre um aluno e outros objetos, baseando-se apenas na matrícula.
+	 * Compara a igualdade entre um aluno e outro objeto, baseando-se apenas na matrícula para
+	 * comparação.
 	 * 
 	 * @return um booleano {@code true} caso o aluno seja igual ao objeto comparado e {@code false}
 	 * caso contrário.
@@ -113,6 +118,4 @@ public class Aluno
 		
 		return true;
 	}
-	
-	
 }
