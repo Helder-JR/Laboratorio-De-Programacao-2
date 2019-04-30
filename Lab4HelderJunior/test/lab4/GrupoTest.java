@@ -91,4 +91,60 @@ class GrupoTest
 		
 		assertTrue(this.grupo.equals(this.outro));
 	}
+	
+	@Test
+	void testEqualsTemasDiferentes()
+	{
+		this.grupo = new Grupo("Vetores");
+		Aluno a1 = new Aluno("555789122", "Cláudia", "Educação Física");
+		Aluno a2 = new Aluno("220294148", "Francis", "Fisioterapia");
+		this.grupo.alocarAluno(a1);
+		this.grupo.alocarAluno(a2);
+		
+		this.outro = new Grupo("Derivadas");
+		Aluno a3 = new Aluno("910555445", "Gabrielly", "Economia");
+		Aluno a4 = new Aluno("011922384", "Josenildo", "Engenharia de Materiais");
+		this.grupo.alocarAluno(a3);
+		this.grupo.alocarAluno(a4);
+		
+		assertFalse(this.grupo.equals(this.outro));
+	}
+	
+	@Test
+	void testEqualsMesmoObjeto()
+	{
+		this.grupo = new Grupo("Análise Assintótica de Algoritmos");
+		Aluno a1 = new Aluno("100258799", "Flávia", "Ciências Sociais");
+		Aluno a2 = new Aluno("220282648", "Giovana", "Computação");
+		this.grupo.alocarAluno(a1);
+		this.grupo.alocarAluno(a2);
+		
+		assertTrue(this.grupo.equals(this.grupo));
+	}
+	
+	@Test
+	void testEqualsObjetoNull()
+	{
+		this.grupo = new Grupo("Diagramas de Classes");
+		Aluno a1 = new Aluno("104408799", "Rondinelle", "Engenharia Química");
+		Aluno a2 = new Aluno("220009948", "Gaspar", "Computação");
+		this.grupo.alocarAluno(a1);
+		this.grupo.alocarAluno(a2);
+		
+		assertFalse(this.grupo.equals(null));
+	}
+	
+	@Test
+	void testEqualsClassesDiferentes()
+	{
+		this.grupo = new Grupo("Cinemática");
+		Aluno a1 = new Aluno("000808799", "Franklin", "Ciência dos Dados");
+		Aluno a2 = new Aluno("123409948", "Marta", "Medicina");
+		this.grupo.alocarAluno(a1);
+		this.grupo.alocarAluno(a2);
+		
+		Aluno aluno = new Aluno("232233233", "Iuri", "Engenharia Elétrica");
+		
+		assertFalse(this.grupo.equals(aluno));
+	}
 }

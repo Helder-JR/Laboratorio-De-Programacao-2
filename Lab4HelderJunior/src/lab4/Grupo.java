@@ -84,7 +84,7 @@ public class Grupo
 		final int prime = 31;
 		int result = 1;
 		
-		result = prime * result + ((this.tema == null) ? 0 : tema.hashCode());
+		result = prime * result + this.tema.hashCode();
 		
 		return result;
 	}
@@ -110,10 +110,7 @@ public class Grupo
 		
 		Grupo other = (Grupo) obj;
 		
-		if (this.tema == null)
-			if (other.tema != null)
-				return false;
-		else if (!this.tema.equals(other.tema))
+		if (!this.tema.equals(other.tema))
 			return false;
 		
 		return true;

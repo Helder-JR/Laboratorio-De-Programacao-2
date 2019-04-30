@@ -82,7 +82,7 @@ public class Aluno
 		final int prime = 31;
 		int result = 1;
 		
-		result = prime * result + ((this.matricula == null) ? 0 : matricula.hashCode());
+		result = prime * result + this.matricula.hashCode();
 		
 		return result;
 	}
@@ -110,10 +110,7 @@ public class Aluno
 		
 		Aluno other = (Aluno) obj;
 		
-		if (this.matricula == null)
-			if (other.matricula != null)
-				return false;
-		else if (!this.matricula.equals(other.matricula))
+		if (!this.matricula.equals(other.matricula))
 			return false;
 		
 		return true;
