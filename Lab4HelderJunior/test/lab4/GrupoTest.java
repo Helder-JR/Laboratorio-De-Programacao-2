@@ -10,7 +10,7 @@ class GrupoTest
 	private Grupo outro;
 	
 	@BeforeEach
-	void testGrupos()
+	void testGrupo()
 	{
 		this.grupo = null;
 		this.outro = null;

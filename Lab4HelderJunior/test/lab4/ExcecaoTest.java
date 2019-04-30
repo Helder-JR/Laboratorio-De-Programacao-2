@@ -6,7 +6,12 @@ import org.junit.jupiter.api.Test;
 
 class ExcecaoTest
 {
-
+	@Test
+	void testExcecao()
+	{
+		Excecao exc = new Excecao();
+	}
+	
 	@Test
 	void testEntradaNula()
 	{

@@ -16,7 +16,7 @@ public class ControleDeALunos
 	/**
 	 * HashMap que irá armazenar os alunos, inserindo-os através da sua matrícula.
 	 */
-	private HashMap<String, Aluno> alunos;
+	private HashMap<String, Aluno> mapaDeAlunos;
 	
 	/**
 	 * ArrayList que irá armazenar os alunos que responderam questões.
@@ -28,7 +28,7 @@ public class ControleDeALunos
 	 */
 	public ControleDeALunos()
 	{
-		this.alunos = new HashMap<>();
+		this.mapaDeAlunos = new HashMap<>();
 		this.alunosQueResponderamQuestoes = new ArrayList<>();
 	}
 	
@@ -47,12 +47,12 @@ public class ControleDeALunos
 		Excecao.testarEntrada(nome);
 		Excecao.testarEntrada(curso);
 		
-		if (this.alunos.containsKey(matricula))
+		if (this.mapaDeAlunos.containsKey(matricula))
 			return false;
 		else
 		{
 			Aluno aluno = new Aluno(matricula, nome, curso);
-			this.alunos.put(matricula, aluno);
+			this.mapaDeAlunos.put(matricula, aluno);
 			return true;
 		}
 	}
@@ -69,7 +69,7 @@ public class ControleDeALunos
 	{
 		Excecao.testarEntrada(matricula);
 		
-		return this.alunos.get(matricula);
+		return this.mapaDeAlunos.get(matricula);
 	}
 	
 	/**
@@ -85,10 +85,10 @@ public class ControleDeALunos
 	{
 		Excecao.testarEntrada(matricula);
 		
-		if (this.alunos.containsKey(matricula))
+		if (this.mapaDeAlunos.containsKey(matricula))
 		{
-			this.alunosQueResponderamQuestoes.add(this.alunos.get(matricula));
-			return false;
+			this.alunosQueResponderamQuestoes.add(this.mapaDeAlunos.get(matricula));
+			return true;
 		}
 		else
 			return false;
@@ -110,7 +110,7 @@ public class ControleDeALunos
 		
 		lista += "Alunos:" + System.lineSeparator();
 		for (int i = 0; i < this.alunosQueResponderamQuestoes.size(); i++)
-			lista += (i + 1) + this.alunosQueResponderamQuestoes.get(i).toString() + System.lineSeparator();
+			lista += (i + 1) + ". " + this.alunosQueResponderamQuestoes.get(i).toString() + System.lineSeparator();
 		
 		return lista.trim();
 	}

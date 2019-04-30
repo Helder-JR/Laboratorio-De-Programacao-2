@@ -10,7 +10,7 @@ class AlunoTest
 	private Aluno outro;
 	
 	@BeforeEach
-	void testAlunos()
+	void testAluno()
 	{
 		this.aluno = null;
 		this.outro = null;
