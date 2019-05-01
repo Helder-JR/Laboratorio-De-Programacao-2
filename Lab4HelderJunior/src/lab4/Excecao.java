@@ -12,13 +12,15 @@ public class Excecao
 	 * 
 	 * @param entrada a String que irá ser testada.
 	 * @throws NullPointerException caso a entrada seja nula.
-	 * @throws IllegalArgumentException caso a entrada seja uma String vazia ou apenas espaços.
+	 * @throws IllegalArgumentException caso a entrada seja uma String vazia ou apenas uma String
+	 * formada por espaços.
 	 */
 	public static void testarEntrada(String entrada)
 	{
 		if (entrada == null)
 			throw new NullPointerException("Entrada nula!");
-		else if (entrada.equals("") || entrada.trim().isEmpty())
+		
+		if (entrada.trim().isEmpty())
 			throw new IllegalArgumentException("Entrada inválida!");
 	}
 }

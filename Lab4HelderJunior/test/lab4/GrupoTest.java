@@ -40,6 +40,15 @@ class GrupoTest
 	}
 	
 	@Test
+	void testContemAluno()
+	{
+		this.grupo = new Grupo("Cálculo 1");
+		Aluno aluno = new Aluno("213654887", "Patrício", "Letras");
+		this.grupo.alocarAluno(aluno);
+		assertTrue(this.grupo.contemAluno(aluno));
+	}
+	
+	@Test
 	void testToString()
 	{
 		this.grupo = new Grupo("Cálculo 1");

@@ -7,18 +7,24 @@ import java.util.HashSet;
  * compõem. Cada grupo é identificado unicamente pelo seu nome.
  * 
  * @author Helder Chaves Leite Junior - 118210158
- * @version 1.1
+ * @version 1.2
  */
 public class Grupo
 {
+	/**
+	 * Tema do grupo.
+	 */
 	private String tema;
+	
+	/**
+	 * Conjunto de alunos que fazem parte do grupo.
+	 */
 	private HashSet<Aluno> alunos;
 	
 	/**
 	 * Cria um grupo de estudos.
 	 * 
 	 * @param tema o tema do grupo de estudos.
-	 * @since 1.0
 	 */
 	public Grupo(String tema)
 	{
@@ -48,6 +54,19 @@ public class Grupo
 	public boolean alocarAluno(Aluno aluno)
 	{
 		return this.alunos.add(aluno);
+	}
+	
+	/**
+	 * Verifica se um aluno está no grupo de estudos.
+	 * 
+	 * @param aluno o aluno a ser verificado.
+	 * @return um booleano {@code true} caso o aluno esteja alocado no grupo e {@code false} caso
+	 * contrário.
+	 * @since 1.2
+	 */
+	public boolean contemAluno(Aluno aluno)
+	{
+		return this.alunos.contains(aluno);
 	}
 	
 	/**

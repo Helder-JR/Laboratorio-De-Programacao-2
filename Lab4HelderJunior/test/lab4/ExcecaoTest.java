@@ -44,4 +44,14 @@ class ExcecaoTest
 		}
 		catch(IllegalArgumentException iae) {  }
 	}
+	
+	@Test
+	void testEntradaNaoVazia()
+	{
+		try
+		{
+			Excecao.testarEntrada("Teste");
+		}
+		catch(IllegalArgumentException iae) {  }
+	}
 }

@@ -11,12 +11,17 @@ import java.util.HashMap;
  * @author Helder Chaves Leite Junior - 118210158
  * @version 1.0
  */
-public class ControleDeALunos
+public class ControleAlunosGrupos
 {
 	/**
 	 * HashMap que irá armazenar os alunos, inserindo-os através da sua matrícula.
 	 */
 	private HashMap<String, Aluno> mapaDeAlunos;
+	
+	/**
+	 * Mapa que contém os grupos de estudo, sendo suas chaves os temas de cada grupo.
+	 */
+	private HashMap<String, Grupo> mapaDeGrupos;
 	
 	/**
 	 * ArrayList que irá armazenar os alunos que responderam questões.
@@ -26,10 +31,11 @@ public class ControleDeALunos
 	/**
 	 * Cria um controle de alunos.
 	 */
-	public ControleDeALunos()
+	public ControleAlunosGrupos()
 	{
 		this.mapaDeAlunos = new HashMap<>();
 		this.alunosQueResponderamQuestoes = new ArrayList<>();
+		this.mapaDeGrupos = new HashMap<>();
 	}
 	
 	/**
@@ -70,6 +76,64 @@ public class ControleDeALunos
 		Excecao.testarEntrada(matricula);
 		
 		return this.mapaDeAlunos.get(matricula);
+	}
+	
+	/**
+	 * Cadastra um grupo no mapa de grupos de estudo.
+	 * 
+	 * @param tema o tema do grupo que será cadastrado.
+	 * @return um booleano {@code true} caso o grupo seja cadastrado e {@code false} caso contrário.
+	 * @since 1.0
+	 */
+	public boolean cadastrarGrupo(String tema)
+	{
+		Excecao.testarEntrada(tema);
+		
+		if (this.mapaDeGrupos.containsKey(tema))
+			return false;
+		else
+		{
+			Grupo grupo = new Grupo(tema);
+			this.mapaDeGrupos.put(tema, grupo);
+			return true;
+		}
+	}
+	
+	/**
+	 * Aloca um aluno em um grupo de estudos. 
+	 * 
+	 * @param matricula a matrícula referente ao aluno que será alocado.
+	 * @param tema o tema referente ao grupo que irá alocar o aluno.
+	 * @return um booleano {@code true} caso o aluno seja ou já esteja alocado no grupo e
+	 * {@code false} caso contrário. 
+	 * @since 1.0
+	 */
+	public boolean alocarAlunoEmGrupo(String matricula, String tema)
+	{
+		Excecao.testarEntrada(matricula);
+		Excecao.testarEntrada(tema);
+		
+		if (!this.mapaDeGrupos.containsKey(tema))
+			return false;
+		
+		if (!this.mapaDeAlunos.containsKey(matricula))
+			return false;
+		
+		Grupo grupo = this.mapaDeGrupos.get(tema);
+		Aluno aluno = this.mapaDeAlunos.get(matricula);
+		
+		if (grupo.contemAluno(aluno))
+			return true;
+		else
+			return grupo.alocarAluno(aluno);
+	}
+	
+	public String imprimirGrupo(String tema)
+	{
+		if (this.mapaDeGrupos.containsKey(tema))
+			return this.mapaDeGrupos.get(tema).toString();
+		else
+			return "Grupo não cadastrado.";
 	}
 	
 	/**
