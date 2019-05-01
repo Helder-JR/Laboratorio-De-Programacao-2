@@ -9,7 +9,7 @@ import java.util.HashMap;
  * e exibição de tais elementos.
  * 
  * @author Helder Chaves Leite Junior - 118210158
- * @version 1.0
+ * @version 1.1
  */
 public class ControleAlunosGrupos
 {
@@ -128,6 +128,17 @@ public class ControleAlunosGrupos
 			return grupo.alocarAluno(aluno);
 	}
 	
+	/**
+	 * Retorna uma representação de uma lista que contém os alunos participantes de um grupo de
+	 * estudo, seguindo o modelo:
+	 * </br>
+	 * </br>"Alunos do grupo X"
+	 * </br>"* Matrícula - Nome - Curso"
+	 * 
+	 * @param tema o tema referente ao grupo a ser representado.
+	 * @return a String que representa a lista de alunos no grupo de estudo.
+	 * @since 1.1
+	 */
 	public String imprimirGrupo(String tema)
 	{
 		if (this.mapaDeGrupos.containsKey(tema))
