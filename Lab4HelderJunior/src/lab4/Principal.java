@@ -10,8 +10,16 @@ import java.util.Scanner;
  */
 public class Principal
 {
+	/**
+	 * Objeto responsável por ler os dados inseridos pelo usuário.
+	 */
 	public static Scanner entrada = new Scanner(System.in);
 	
+	/**
+	 * Método principal de início do programa.
+	 * 
+	 * @param args argumentos passados pela linha de comando (Não útil no contexto deste programa).
+	 */
 	public static void main(String[] args)
 	{
 		ControleAcademico controle = new ControleAcademico();
