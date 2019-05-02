@@ -203,7 +203,7 @@ public class ControleAcademico
 	 * </br>
 	 * </br>"Alunos:"
 	 * </br>"1. Matrícula - Nome - Curso"
-	 * 
+	 * </br>
 	 * @return a String que representa o arranjo de alunos que responderam questões no quadro. 
 	 * @since 1.0
 	 */
