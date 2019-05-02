@@ -4,35 +4,35 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ControleAlunosGruposTest
+class ControleAcademicoTest
 {
-	private ControleAlunosGrupos controle;
+	private ControleAcademico controle;
 	
 	@BeforeEach
-	void testControleDeAluno()
+	void testControleAcademico()
 	{
 		this.controle = null;
 	}
 	
 	@Test
-	void testNovoControleDeAlunos()
+	void testNovoControleAcademico()
 	{
 		assertNull(this.controle);
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		assertNotNull(this.controle);
 	}
 	
 	@Test
 	void testCadastrarAluno()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		assertTrue(this.controle.cadastrarAluno("118210158", "Helder", "Computação"));
 	}
 	
 	@Test
 	void testCadastrarAlunoMatriculaExistente()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("118210158", "Ruan", "Pedagogia");
 		assertFalse(this.controle.cadastrarAluno("118210158", "Pietro", "Letras"));
 	}
@@ -42,7 +42,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno(null, "Ricardo", "Medicina");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
 		}
@@ -54,7 +54,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("", "Ricardo", "Medicina");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
 		}
@@ -66,7 +66,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno(" ", "Ricardo", "Medicina");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
 		}
@@ -78,7 +78,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("123456789", null, "Computação");
 			fail("Deveria ter gerado uma exceção de entrada nula!");
 		}
@@ -90,7 +90,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("776904123", "", "Medicina");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
 		}
@@ -102,7 +102,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("486759123", " ", "Veterinária");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
 		}
@@ -114,7 +114,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("153426789", "Lucca", null);
 			fail("Deveria ter gerado uma exceção de entrada nula!");
 		}
@@ -126,7 +126,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("288357917", "Antônio", "");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
 		}
@@ -138,7 +138,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("118448796", "Rodolfo", " ");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
 		}
@@ -148,7 +148,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testConsultarAluno()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("449853201", "David", "Matemática");
 		Aluno aluno = this.controle.consultarAluno("449853201");
 		assertEquals(aluno, this.controle.consultarAluno("449853201"));
@@ -159,7 +159,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("156742893", "Marcelo", "Física");
 			this.controle.consultarAluno(null);
 			fail("Deveria ter gerado uma exceção de entrada nula!");
@@ -172,7 +172,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("893001228", "Gleyson", "Jogos Digitais");
 			this.controle.consultarAluno("");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
@@ -185,7 +185,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("123558479", "Jadison", "Jogos Digitais");
 			this.controle.consultarAluno(" ");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
@@ -194,9 +194,25 @@ class ControleAlunosGruposTest
 	}
 	
 	@Test
+	void testContemAluno()
+	{
+		this.controle = new ControleAcademico();
+		this.controle.cadastrarAluno("123558479", "Jadison", "Jogos Digitais");
+		assertTrue(this.controle.contemAluno("123558479"));
+	}
+	
+	@Test
+	void testContemGrupo()
+	{
+		this.controle = new ControleAcademico();
+		this.controle.cadastrarGrupo("Código penal");
+		assertTrue(this.controle.contemGrupo("Código penal"));
+	}
+	
+	@Test
 	void testCadastrarAlunosQueResponderam()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("118210158", "Helder Junior", "Ciência da Computação");
 		assertTrue(this.controle.cadastrarAlunosQueResponderam("118210158"));
 	}
@@ -204,7 +220,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testCadastrarAlunosQueResponderamMatriculaInexistente()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("388093640", "Tayná Tavares", "Administração");
 		assertFalse(this.controle.cadastrarAlunosQueResponderam("118110462"));
 	}
@@ -212,7 +228,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testImprimirAlunosQueResponderamQuestoes()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("388093640", "Tayná Tavares", "Administração");
 		this.controle.cadastrarAluno("118210158", "Helder Junior", "Ciência da Computação");
 		this.controle.cadastrarAluno("893001228", "Gleyson", "Jogos Digitais");
@@ -235,21 +251,21 @@ class ControleAlunosGruposTest
 	void testNovoControleDeGrupo()
 	{
 		assertNull(this.controle);
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		assertNotNull(this.controle);
 	}
 
 	@Test
 	void testCadastrarGrupo()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		assertTrue(this.controle.cadastrarGrupo("Funções do 2º grau"));
 	}
 	
 	@Test
 	void testCadastrarGrupoTemaExistente()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarGrupo("Logaritmos");
 		assertFalse(this.controle.cadastrarGrupo("Logaritmos"));
 	}
@@ -259,7 +275,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarGrupo(null);
 		}
 		catch(NullPointerException npe) {  }
@@ -270,7 +286,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarGrupo("");
 		}
 		catch(IllegalArgumentException iae) {  }
@@ -281,7 +297,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarGrupo(" ");
 		}
 		catch(IllegalArgumentException iae) {  }
@@ -290,7 +306,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testAlocarAlunoEmGrupo()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 		this.controle.cadastrarGrupo("IA");
 		assertTrue(this.controle.alocarAlunoEmGrupo("118210158", "IA"));
@@ -299,7 +315,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testAlocarAlunoExistenteEmGrupo()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 		this.controle.cadastrarGrupo("IA");
 		this.controle.alocarAlunoEmGrupo("118210158", "IA");
@@ -309,7 +325,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testAlocarAlunoInexistenteEmGrupo()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 		this.controle.cadastrarGrupo("IA");
 		assertFalse(this.controle.alocarAlunoEmGrupo("11574998", "IA"));
@@ -318,7 +334,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testAlocarAlunoEmGrupoInexistente()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 		this.controle.cadastrarGrupo("IA");
 		assertFalse(this.controle.alocarAlunoEmGrupo("11574998", "EDA"));
@@ -329,7 +345,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 			this.controle.cadastrarGrupo("Português");
 			this.controle.alocarAlunoEmGrupo(null, "OAC");
@@ -343,7 +359,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 			this.controle.cadastrarGrupo("Português");
 			this.controle.alocarAlunoEmGrupo("", "Português");
@@ -357,7 +373,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 			this.controle.cadastrarGrupo("Português");
 			this.controle.alocarAlunoEmGrupo(" ", "Português");
@@ -371,7 +387,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 			this.controle.cadastrarGrupo("Português");
 			this.controle.alocarAlunoEmGrupo("118210158", null);
@@ -385,7 +401,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 			this.controle.cadastrarGrupo("Português");
 			this.controle.alocarAlunoEmGrupo("118210158", "");
@@ -399,7 +415,7 @@ class ControleAlunosGruposTest
 	{
 		try
 		{
-			this.controle = new ControleAlunosGrupos();
+			this.controle = new ControleAcademico();
 			this.controle.cadastrarGrupo("Português");
 			this.controle.alocarAlunoEmGrupo("118210158", " ");
 			fail("Deveria ter gerado uma exceção de entrada inválida!");
@@ -410,7 +426,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testImprimirGrupo()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 		this.controle.cadastrarAluno("388093640", "Tayná Tavares", "Administração");
 		this.controle.cadastrarAluno("893001228", "Gleyson", "Jogos Digitais");
@@ -431,7 +447,7 @@ class ControleAlunosGruposTest
 	@Test
 	void testImprimirGrupoNaoCadastrado()
 	{
-		this.controle = new ControleAlunosGrupos();
+		this.controle = new ControleAcademico();
 		this.controle.cadastrarAluno("118210158", "Helder", "Computação");
 		this.controle.cadastrarAluno("388093640", "Tayná Tavares", "Administração");
 		this.controle.cadastrarAluno("893001228", "Gleyson", "Jogos Digitais");

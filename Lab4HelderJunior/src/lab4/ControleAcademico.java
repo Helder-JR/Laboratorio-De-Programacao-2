@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Representação de um sistema que controla os alunos em um controle acadêmico, possuindo coleções
- * de alunos e de perguntas respondidas por estes, além de métodos responsáveis pelo gerenciamento
- * e exibição de tais elementos.
+ * Representação de um sistema de controle acadêmico de alunos, possuindo coleções de alunos e de
+ * perguntas respondidas por estes, além de métodos responsáveis pelo gerenciamento e exibição de
+ * tais elementos.
  * 
  * @author Helder Chaves Leite Junior - 118210158
- * @version 1.1
+ * @version 1.2
  */
-public class ControleAlunosGrupos
+public class ControleAcademico
 {
 	/**
 	 * HashMap que irá armazenar os alunos, inserindo-os através da sua matrícula.
@@ -19,7 +19,7 @@ public class ControleAlunosGrupos
 	private HashMap<String, Aluno> mapaDeAlunos;
 	
 	/**
-	 * Mapa que contém os grupos de estudo, sendo suas chaves os temas de cada grupo.
+	 * Mapa que contém os grupos de estudo, sendo suas chaves os temas de cada grupo (em minúsculo).
 	 */
 	private HashMap<String, Grupo> mapaDeGrupos;
 	
@@ -31,7 +31,7 @@ public class ControleAlunosGrupos
 	/**
 	 * Cria um controle de alunos.
 	 */
-	public ControleAlunosGrupos()
+	public ControleAcademico()
 	{
 		this.mapaDeAlunos = new HashMap<>();
 		this.alunosQueResponderamQuestoes = new ArrayList<>();
@@ -79,6 +79,34 @@ public class ControleAlunosGrupos
 	}
 	
 	/**
+	 * Verifica a existência de um aluno em um mapa de alunos.
+	 * 
+	 * @param matricula a matrícula do aluno a ser verificada.
+	 * @return um booleano {@code true} caso o aluno exista no mapa ou {@code false} caso contrário.
+	 * @since 1.2
+	 */
+	public boolean contemAluno(String matricula)
+	{
+		Excecao.testarEntrada(matricula);
+		
+		return this.mapaDeAlunos.containsKey(matricula);
+	}
+	
+	/**
+	 * Verifica a existência de um grupo em um mapa de grupos de estudo.
+	 * 
+	 * @param tema o tema do grupo a ser verificada.
+	 * @return um booleano {@code true} caso o grupo exista no mapa ou {@code false} caso contrário.
+	 * @since 1.2
+	 */
+	public boolean contemGrupo(String tema)
+	{
+		Excecao.testarEntrada(tema);
+		
+		return this.mapaDeGrupos.containsKey(tema.toLowerCase());
+	}
+	
+	/**
 	 * Cadastra um grupo no mapa de grupos de estudo.
 	 * 
 	 * @param tema o tema do grupo que será cadastrado.
@@ -89,12 +117,12 @@ public class ControleAlunosGrupos
 	{
 		Excecao.testarEntrada(tema);
 		
-		if (this.mapaDeGrupos.containsKey(tema))
+		if (this.mapaDeGrupos.containsKey(tema.toLowerCase()))
 			return false;
 		else
 		{
 			Grupo grupo = new Grupo(tema);
-			this.mapaDeGrupos.put(tema, grupo);
+			this.mapaDeGrupos.put(tema.toLowerCase(), grupo);
 			return true;
 		}
 	}
@@ -113,13 +141,13 @@ public class ControleAlunosGrupos
 		Excecao.testarEntrada(matricula);
 		Excecao.testarEntrada(tema);
 		
-		if (!this.mapaDeGrupos.containsKey(tema))
+		if (!this.mapaDeGrupos.containsKey(tema.toLowerCase()))
 			return false;
 		
 		if (!this.mapaDeAlunos.containsKey(matricula))
 			return false;
 		
-		Grupo grupo = this.mapaDeGrupos.get(tema);
+		Grupo grupo = this.mapaDeGrupos.get(tema.toLowerCase());
 		Aluno aluno = this.mapaDeAlunos.get(matricula);
 		
 		if (grupo.contemAluno(aluno))
@@ -141,8 +169,8 @@ public class ControleAlunosGrupos
 	 */
 	public String imprimirGrupo(String tema)
 	{
-		if (this.mapaDeGrupos.containsKey(tema))
-			return this.mapaDeGrupos.get(tema).toString();
+		if (this.mapaDeGrupos.containsKey(tema.toLowerCase()))
+			return this.mapaDeGrupos.get(tema.toLowerCase()).toString();
 		else
 			return "Grupo não cadastrado.";
 	}
