@@ -116,7 +116,7 @@ public class Cliente
 		final int prime = 31;
 		int result = 1;
 		
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((this.cpf == null) ? 0 : this.cpf.hashCode());
 		
 		return result;
 	}
