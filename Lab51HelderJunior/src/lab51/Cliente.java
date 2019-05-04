@@ -1,9 +1,11 @@
 package lab51;
 
 /**
+ * Representação de um cliente no SAGA. Possui informações referentes ao CPF, nome, e-mail e
+ * localização, além de poder alterar tais informações (exceto o CPF).
  * 
- * 
- * @author Helder Junior
+ * @author Helder Chaves Leite Junior - 118210158
+ * @version 1.0
  */
 public class Cliente
 {
@@ -137,15 +139,17 @@ public class Cliente
 		if (obj == null)
 			return false;
 		
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
 		
 		Cliente other = (Cliente) obj;
 		
-		if (cpf == null)
+		if (this.cpf == null)
+		{
 			if (other.cpf != null)
 				return false;
-		else if (!cpf.equals(other.cpf))
+		}
+		else if (!this.cpf.equals(other.cpf))
 			return false;
 		
 		return true;
