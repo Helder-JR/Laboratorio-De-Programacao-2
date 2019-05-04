@@ -40,8 +40,6 @@ public class Fornecedor
 	}
 	
 	/**
-	 * Retorna o nome do fornecedor.
-	 * 
 	 * @return a String referente ao nome do fornecedor.
 	 * @since 1.0
 	 */

@@ -47,8 +47,6 @@ public class Cliente
 	}
 	
 	/**
-	 * Retorna o CPF do cliente.
-	 * 
 	 * @return a String referente ao CPF do cliente.
 	 * @since 1.0
 	 */
