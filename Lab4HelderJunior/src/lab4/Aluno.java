@@ -12,17 +12,17 @@ public class Aluno
 	/**
 	 * A matrícula do aluno.
 	 */
-	String matricula;
+	private String matricula;
 	
 	/**
 	 * O nome do aluno.
 	 */
-	String nome;
+	private String nome;
 	
 	/**
 	 * O nome do curso.
 	 */
-	String curso;
+	private String curso;
 	
 	/**
 	 * Cria um aluno.

@@ -132,4 +132,27 @@ class FornecedorTest
 		Cliente cliente = new Cliente("055.821.944-06", "Hinata", "hinata@konoha.com", "Vila da Folha");
 		assertFalse(this.fornecedor.equals(cliente));
 	}
+	
+	@Test
+	void testAdicionarProduto()
+	{
+		this.fornecedor = new Fornecedor("Parmalat", "atendimento@parmalat.com", "(41)4447-7171");
+		assertTrue(this.fornecedor.adicionarProduto("Leite UHT", "Leite desnatado", 5.00));
+	}
+	
+	@Test
+	void testAdicionarProdutoInexistente()
+	{
+		this.fornecedor = new Fornecedor("Parmalat", "atendimento@parmalat.com", "(41)4447-7171");
+		assertTrue(this.fornecedor.adicionarProduto("Leite UHT", "Leite desnatado", 5.00));
+	}
+	
+	@Test
+	void testConsultarProduto()
+	{
+		this.fornecedor = new Fornecedor("Parmalat", "atendimento@parmalat.com", "(41)4447-7171");
+		this.fornecedor.adicionarProduto("Leite UHT", "Leite desnatado", 5.00);
+		Produto produto = this.fornecedor.consultarProduto("Leite UHT", "Leite desnatado");
+		assertEquals("Leite UHT - Leite desnatado - R$5,00", produto.toString());
+	}
 }
