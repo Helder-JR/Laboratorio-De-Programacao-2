@@ -10,6 +10,7 @@ expectError "Erro no cadastro do cliente: localizacao nao pode ser vazia ou nula
 expectError "Erro no cadastro do cliente: cliente ja existe." adicionaCliente cpf=64269141198 nome="Ana Livia" email="livia@ccc.ufcg.edu.br" localizacao="Vtex"
 expectError "Erro no cadastro do cliente: cpf invalido." adicionaCliente cpf=471821918247128947129 nome="Ana Mira" email="ana@ccc.ufcg.edu.br" localizacao="GetComp"
 expectError "Erro no cadastro do cliente: cpf invalido." adicionaCliente cpf=123455 nome="Gabriel Maracuja" email="gsmtech@ccc.ufcg.edu.br" localizacao="Propex"
+
 ## Exibindo clientes ##
 expect "Victor Emanuel - Labarc - vitao@ccc.ufcg.edu.br" exibeCliente cpf=${cliente1}
 expect "Wilson Andre - Embedded - wilson_andre@ccc.ufcg.edu.br" exibeCliente cpf=${cliente2}
